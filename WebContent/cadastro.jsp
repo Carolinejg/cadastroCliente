@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <head>
-
+<link rel="stylesheet" type="text/css" href="index.css" media="screen" />
     
 </head>
 <body>
@@ -35,6 +35,7 @@
 
 <!-- Text input-->
 <div class="form-group">
+
   <label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>  
   <div class="col-md-8">
   <input id="Nome" name="Nome" placeholder="" class="form-control input-md" required="" type="text">
@@ -79,7 +80,7 @@
   <div class="col-md-2">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-      <input id="prependedtext" name="prependedtext" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+      <input id="prependedtext" name="celular" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
       OnKeyPress="formatar('## #####-####', this)">
     </div>
 </div>
