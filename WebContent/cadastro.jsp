@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form class="form-horizontal">
+<form class="form-horizontal" method="POST" action= 'CadastroController' >
 <fieldset>
 <div class="panel panel-primary">
     <div class="panel-heading">Cadastro de Cliente</div>
@@ -80,8 +80,7 @@
   <div class="col-md-2">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-      <input id="prependedtext" name="celular" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
-      OnKeyPress="formatar('## #####-####', this)">
+      <input id="prependedtext" name="celular" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" >
     </div>
 </div>
   
@@ -92,7 +91,7 @@
   <div class="col-md-5">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-      <input id="prependedtext" name="prependedtext" class="form-control" placeholder="email@email.com" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+      <input id="prependedtext" name="email" class="form-control" placeholder="email@email.com" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
     </div>
   </div>
 </div>
