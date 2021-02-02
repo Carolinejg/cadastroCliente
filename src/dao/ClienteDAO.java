@@ -41,7 +41,7 @@ public class ClienteDAO {
     
     
     public Cliente getClienteByCpf(String clienteCpf) {
-    	Cliente cliente = new Cliente();
+    	
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from prv_cliente where cpf=?");
             preparedStatement.setString(1, clienteCpf);
@@ -49,6 +49,7 @@ public class ClienteDAO {
 
             if (rs.next()) {
             	
+            	Cliente cliente = new Cliente();
             	cliente.setNome(rs.getString("nome"));
             	cliente.setRg(rs.getString("rg"));
             	cliente.setCpf(rs.getString("cpf"));
@@ -57,14 +58,14 @@ public class ClienteDAO {
             	cliente.setNomeMae(rs.getString("nome_mae"));
             	cliente.setNomePai(rs.getString("nome_pai"));
             	cliente.setDataNsc(rs.getDate("data_nasc"));
-            	cliente.setDataCad(rs.getDate("data_cadastro"));
-            	
+            	cliente.setDataCad(rs.getTimestamp("data_cadastro"));
+            	return cliente;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return cliente;
+        return null;
     }
 
 }
