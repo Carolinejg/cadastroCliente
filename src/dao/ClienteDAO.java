@@ -29,7 +29,7 @@ public class ClienteDAO {
             preparedStatement.setString(6, cliente.getNomeMae());
             preparedStatement.setString(7, cliente.getNomePai());
             preparedStatement.setDate(8, new java.sql.Date(cliente.getDataNsc().getTime()));
-            preparedStatement.setDate(9, new java.sql.Date(cliente.getDataCad().getTime()));
+            preparedStatement.setTimestamp(9, new java.sql.Timestamp(cliente.getDataCad().getTime()));
                      
             preparedStatement.executeUpdate();
 

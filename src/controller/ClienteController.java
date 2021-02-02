@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.Date;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
@@ -38,7 +39,7 @@ public class ClienteController extends HttpServlet {
 	    }
 	   
 	    // Todo pegar data atual 
-	    Date dataAtual = new Date(1); 
+	    Date dataAtual = new Date(); 
 	    cliente.setDataCad(new Date(dataAtual.getTime()));
 	    
 	    
