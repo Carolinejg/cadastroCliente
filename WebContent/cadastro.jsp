@@ -71,8 +71,56 @@
   
   <label class="col-md-1 control-label" for="Nome">Nascimento<h11>*</h11></label>  
   <div class="col-md-2">
-  <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+  <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="minhaFuncao()">
 </div>
+
+<script>
+function calcIdade(ano_aniversario, mes_aniversario, dia_aniversario) {
+    var d = new Date,
+        ano_atual = d.getFullYear(),
+        mes_atual = d.getMonth() + 1,
+        dia_atual = d.getDate(),
+
+        ano_aniversario = +ano_aniversario,
+        mes_aniversario = +mes_aniversario,
+        dia_aniversario = +dia_aniversario,
+
+        quantos_anos = ano_atual - ano_aniversario;
+
+    if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
+        quantos_anos--;
+    }
+
+    return quantos_anos < 0 ? 0 : quantos_anos;
+}
+function minhaFuncao(){
+	var campo = document.getElementById('dtnasc').value;
+	
+	var arrDataExclusao = campo.split('/');
+
+	var stringFormatada = arrDataExclusao[1] + '-' + arrDataExclusao[0] + '-' + arrDataExclusao[2];
+	
+	var dataFormatadaNascimento = new Date(stringFormatada);
+	var year = dataFormatadaNascimento.getFullYear();
+	var month = dataFormatadaNascimento.getMonth();
+	var day = dataFormatadaNascimento.getDate();
+	var idade = calcIdade(year, month, day);
+	console.log(idade);
+	console.log(year);
+	if(idade < 18) {
+		document.getElementById('Cadastrar').disabled=true;
+		alert("Cadastro não pode ser efetuado ");
+	}
+	else{ 
+		document.getElementById('Cadastrar').disabled=false;
+	}
+		
+}
+	
+	
+</script>
+
+
 
 
 <div class="form-group">
