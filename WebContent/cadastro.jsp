@@ -27,7 +27,7 @@
 					<h11>*</h11>
 				</label>
 				<div class="col-md-8">
-					<input id="Nome" name="Nome" placeholder="" class="form-control input-md" required="" type="text" value="nome">
+					<input id="Nome" name="Nome" placeholder="" class="form-control input-md" required="" type="text">
 				</div>
 			</div>
 			<div class="form-group">
@@ -36,7 +36,7 @@
 					<h11>*</h11>
 				</label>
 				<div class="col-md-8">
-					<input id="NomeMae" name="NomeMae" placeholder="" class="form-control input-md" required="" type="text" value="nome">
+					<input id="NomeMae" name="NomeMae" placeholder="" class="form-control input-md" required="" type="text">
 				</div>
 			</div>
 			<div class="form-group">
@@ -45,7 +45,7 @@
 					<h11>*</h11>
 				</label>
 				<div class="col-md-8">
-					<input id="NomePai" name="NomePai" placeholder="" class="form-control input-md" required="" type="text" value="nome">
+					<input id="NomePai" name="NomePai" placeholder="" class="form-control input-md" required="" type="text">
 				</div>
 			</div>
 			<!-- Text input-->
@@ -55,7 +55,7 @@
 					<h11>*</h11>
 				</label>
 				<div class="col-md-3">
-					<input id="cpf" name="cpf" placeholder="Apenas números" value="123.123.123-12" class="form-control input-md" required="" type="text" maxlength="14" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}" onKeyPress="MascaraCPF(form.cpf);" >
+					<input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="14" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}" onKeyPress="MascaraCPF(form.cpf);" >
 				</div>
 			</div>
 			<div class="form-group">
@@ -65,7 +65,7 @@
 					<h11>*</h11>
 				</label>
 				<div class="col-md-2">
-					<input id="rg" name="rg" placeholder="Apenas números" value="12.123.123-12" class="form-control input-md" required="" type="text" maxlength="13" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}" onKeyPress="MascaraRG(form.rg);">
+					<input id="rg" name="rg" placeholder="Apenas números"  class="form-control input-md" required="" type="text" maxlength="13" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}" onKeyPress="MascaraRG(form.rg);">
 				</div>
 				
 				<label class="col-md-2 control-label" for="dtnasc">
@@ -73,7 +73,7 @@
 					<h11>*</h11>
 				</label>
 				<div class="col-md-2">
-					<input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" value="10/10/2000" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="MascaraData(form.dtnasc)" onBlur="minhaFuncao()">
+					<input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA"  class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="MascaraData(form.dtnasc)" onBlur="minhaFuncao()">
 				</div>
 				
 				<label class="col-md-1 control-label" for="prependedtext">
@@ -82,7 +82,7 @@
 				</label>
 				<div class="col-md-2">
 					<div class="input-group">
-						<input id="prependedtext" name="celular" class="form-control" value="(45) 64546-5465" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="15" onKeyPress="MascaraTelefone(form.celular);">
+						<input id="prependedtext" name="celular" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="15" onKeyPress="MascaraTelefone(form.celular);">
 					</div>
 				</div>
 				
@@ -185,7 +185,13 @@
 		    if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
 		        quantos_anos--;
 		    }
-		
+		    console.log("mes atual "+ mes_atual);
+		    console.log(" dia atual "+dia_atual);
+		    console.log("aniversario "+dia_aniversario);
+		    console.log("mes niver "+ mes_aniversario);
+		    console.log("anos "+quantos_anos);
+		    
+			
 		    return quantos_anos < 0 ? 0 : quantos_anos;
 		}
 		
@@ -205,12 +211,12 @@
 			
 			var dataFormatadaNascimento = new Date(stringFormatada);
 			var year = dataFormatadaNascimento.getFullYear();
-			var month = dataFormatadaNascimento.getMonth();
+			var month = dataFormatadaNascimento.getMonth()+1;
 			var day = dataFormatadaNascimento.getDate();
 			var idade = calcIdade(year, month, day);
-			console.log(idade);
-			console.log(year);
-			if(idade < 18) {
+			console.log("idade na minha funcao" +idade);
+			console.log("ano na minha funcao "+year);
+			if(idade < 18 ) {
 				document.getElementById('Cadastrar').disabled=true;
 				alert("Cadastro não pode ser efetuado ");
 			}

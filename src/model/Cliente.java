@@ -12,7 +12,7 @@ public class Cliente {
 	private String nome_pai;
 	private Date dataNsc;
 	private Date dataCad;
-	
+
 	
 	public String getNome() {
 		return nome;
@@ -68,7 +68,6 @@ public class Cliente {
 	public void setDataCad(Date dataCad) {
 		this.dataCad = dataCad;
 	}
-	
-	
+		
 	
 }

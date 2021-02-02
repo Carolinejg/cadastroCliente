@@ -11,7 +11,7 @@
 			</center>
 			<h1>Tudo certo!</h1>
 			<h2 id="logo">
-			Cadastro já realizado na data e hora: <c:out value="${datacad}" />!</h1>
+			Cadastro já realizado em: <c:out value="${datacad}" />!</h1>
 		</div>
 	</body>
 </html>
