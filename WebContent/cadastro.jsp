@@ -171,7 +171,7 @@
 		}
 		
 		function calcIdade(ano_aniversario, mes_aniversario, dia_aniversario) {
-		    var d = new Date,
+		    	var d = new Date,
 		        ano_atual = d.getFullYear(),
 		        mes_atual = d.getMonth() + 1,
 		        dia_atual = d.getDate(),
@@ -185,12 +185,7 @@
 		    if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
 		        quantos_anos--;
 		    }
-		    console.log("mes atual "+ mes_atual);
-		    console.log(" dia atual "+dia_atual);
-		    console.log("aniversario "+dia_aniversario);
-		    console.log("mes niver "+ mes_aniversario);
-		    console.log("anos "+quantos_anos);
-		    
+		    	    
 			
 		    return quantos_anos < 0 ? 0 : quantos_anos;
 		}
@@ -214,8 +209,7 @@
 			var month = dataFormatadaNascimento.getMonth()+1;
 			var day = dataFormatadaNascimento.getDate();
 			var idade = calcIdade(year, month, day);
-			console.log("idade na minha funcao" +idade);
-			console.log("ano na minha funcao "+year);
+			
 			if(idade < 18 ) {
 				document.getElementById('Cadastrar').disabled=true;
 				alert("Cadastro não pode ser efetuado ");
