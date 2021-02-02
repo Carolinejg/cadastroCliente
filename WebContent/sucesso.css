@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+h1,h2{
+	text-align: center;
+}
+img {
+	padding-top: 150px;
+}
+body {
+	background-color: #c2d0d6;
+}

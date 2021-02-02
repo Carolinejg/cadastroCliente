@@ -5,6 +5,8 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +47,9 @@ public class ClienteController extends HttpServlet {
 	    
 	    ClienteDAO cli = new ClienteDAO();
 	    cli.addCliente(cliente);
+	    
+	    RequestDispatcher view = request.getRequestDispatcher("/sucesso.jsp");
+        view.forward(request, response);
 	}
 	
 	String manterApenasNumeros(String text) {
