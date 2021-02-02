@@ -15,16 +15,16 @@ import model.Cliente;
 
 
 @WebServlet(name = "Cadastro", urlPatterns = {"/CadastroController"})
-public class MainServlet extends HttpServlet {
+public class ClienteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    Cliente cliente = new Cliente();
 	    cliente.setNome(request.getParameter("Nome"));
-	    cliente.setRg(request.getParameter("rg"));
-	    cliente.setCpf(request.getParameter("cpf"));
-	    cliente.setCelular(request.getParameter("celular"));
+	    cliente.setRg(manterApenasNumeros(request.getParameter("rg")));
+	    cliente.setCpf(manterApenasNumeros(request.getParameter("cpf")));
+	    cliente.setCelular(manterApenasNumeros(request.getParameter("celular")));
 	    cliente.setEmail(request.getParameter("email"));
 	    cliente.setNomeMae(request.getParameter("NomeMae"));
 	    cliente.setNomePai(request.getParameter("NomePai"));
@@ -44,8 +44,10 @@ public class MainServlet extends HttpServlet {
 	    
 	    ClienteDAO cli = new ClienteDAO();
 	    cli.addCliente(cliente);
-	    
-	    
-	   
 	}
+	
+	String manterApenasNumeros(String text) {
+		return text.replaceAll("[\\.\\(\\) \\-]", "");
+	}
+	
 }

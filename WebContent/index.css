@@ -1,5 +1,5 @@
 @charset "ISO-8859-1";
 
-#nome,#NomePai,#NomeMae{
+#Nome,#NomePai,#NomeMae{
 	text-transform: uppercase;
 }
