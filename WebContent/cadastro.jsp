@@ -1,33 +1,22 @@
+<!DOCTYPE html>
+<head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-<!DOCTYPE html>
-<head>
 <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
-    
+  
 </head>
 <body>
 
-<form class="form-horizontal" method="POST" action= 'CadastroController' >
+<form class="form-horizontal" method="POST" action= 'CadastroController' name="form" >
 <fieldset>
 <div class="panel panel-primary">
     <div class="panel-heading">Cadastro de Cliente</div>
     
     <div class="panel-body">
 <div class="form-group">
-<!--
-<div class="form-group">   
-<div class="col-md-4 control-label">
-    <img id="logo" src="http://blogdoporao.com.br/wp-content/uploads/2016/12/Faculdade-pitagoras.png"/>
-</div>
-<div class="col-md-4 control-label">
-    <h1>Cadastro de Cliente</h1>
-    
-</div>
-</div>
-    -->
+
 <div class="col-md-11 control-label">
         <p class="help-block"><h11>*</h11> Campo Obrigatório </p>
 </div>
@@ -60,13 +49,13 @@
 <div class="form-group">
   <label class="col-md-2 control-label" for="Nome">CPF <h11>*</h11></label>  
   <div class="col-md-3">
-  <input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="11" pattern="[0-9]+$">
+  	<input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="14" pattern="[0-9]+$" onKeyPress="MascaraCPF(form.cpf);" >
   </div>
-  
+</div>  
   <div class="form-group">
   <label class="col-md-2 control-label" for="Nome">RG <h11>*</h11></label>  
   <div class="col-md-2">
-  <input id="rg" name="rg" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="11" pattern="[0-9]+$">
+  <input id="rg" name="rg" placeholder="Apenas números" class="form-control input-md" required="" type="text" maxlength="13" pattern="[0-9]+$" onKeyPress="MascaraRG(form.rg);">
   </div>
   
   <label class="col-md-1 control-label" for="Nome">Nascimento<h11>*</h11></label>  
@@ -75,6 +64,60 @@
 </div>
 
 <script>
+function MascaraCPF(cpf){
+    if(mascaraInteiro(cpf)==false){
+            event.returnValue = false;
+    }       
+    return formataCampo(cpf, '000.000.000-00', event);
+}
+
+function mascaraInteiro(){
+    if (event.keyCode < 48 || event.keyCode > 57){
+            event.returnValue = false;
+            return false;
+    }
+    return true;
+}
+
+function MascaraTelefone(tel){  
+    if(mascaraInteiro(tel)==false){
+            event.returnValue = false;
+    }       
+    return formataCampo(tel, '(00) 00000-0000', event);
+}
+
+function formataCampo(campo, Mascara, evento) { 
+    var boleanoMascara; 
+
+    var Digitato = evento.keyCode;
+    exp = /\-|\.|\/|\(|\)| /g
+    campoSoNumeros = campo.value.toString().replace( exp, "" ); 
+
+    var posicaoCampo = 0;    
+    var NovoValorCampo="";
+    var TamanhoMascara = campoSoNumeros.length;; 
+
+    if (Digitato != 8) { // backspace 
+            for(i=0; i<= TamanhoMascara; i++) { 
+                    boleanoMascara  = ((Mascara.charAt(i) == "-") || (Mascara.charAt(i) == ".")
+                                                            || (Mascara.charAt(i) == "/")) 
+                    boleanoMascara  = boleanoMascara || ((Mascara.charAt(i) == "(") 
+                                                            || (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " ")) 
+                    if (boleanoMascara) { 
+                            NovoValorCampo += Mascara.charAt(i); 
+                              TamanhoMascara++;
+                    }else { 
+                            NovoValorCampo += campoSoNumeros.charAt(posicaoCampo); 
+                            posicaoCampo++; 
+                      }              
+              }      
+            campo.value = NovoValorCampo;
+              return true; 
+    }else { 
+            return true; 
+    }
+}
+
 function calcIdade(ano_aniversario, mes_aniversario, dia_aniversario) {
     var d = new Date,
         ano_atual = d.getFullYear(),
@@ -93,6 +136,14 @@ function calcIdade(ano_aniversario, mes_aniversario, dia_aniversario) {
 
     return quantos_anos < 0 ? 0 : quantos_anos;
 }
+
+function MascaraRG(rg){
+    if((rg)==false){
+            event.returnValue = false;
+    }       
+    return formataCampo(rg, '00.000.000-0', event);
+}
+
 function minhaFuncao(){
 	var campo = document.getElementById('dtnasc').value;
 	
@@ -116,8 +167,6 @@ function minhaFuncao(){
 	}
 		
 }
-	
-	
 </script>
 
 
@@ -128,7 +177,7 @@ function minhaFuncao(){
   <div class="col-md-2">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-      <input id="prependedtext" name="celular" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13" >
+      <input id="prependedtext" name="celular" class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="15" onKeyPress="MascaraTelefone(form.celular);">
     </div>
 </div>
   
